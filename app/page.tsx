@@ -133,7 +133,7 @@ export default function Home() {
               aria-labelledby="hero-heading"
               className="mx-auto box-border flex w-[90%] max-w-[654px] flex-col items-start gap-4 px-2 pb-28 pt-16 text-left sm:px-4 md:items-center md:gap-5 md:px-6 md:pt-24 md:text-center lg:px-8 lg:pb-32 lg:pt-[158px]"
             >
-              <p className="[font-family:var(--font-gaegu)] text-[28px] leading-8 text-black sm:text-[30px] md:text-[32px] md:leading-9 lg:text-[36px] lg:leading-10">
+              <p className="[font-family:var(--font-hyc-handwritten-regular)] text-[28px] leading-8 text-black sm:text-[30px] md:text-[32px] md:leading-9 lg:text-[36px] lg:leading-10">
                 hi! i’m helen
               </p>
 

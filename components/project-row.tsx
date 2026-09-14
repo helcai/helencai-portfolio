@@ -63,7 +63,7 @@ export function ProjectRow({
         </h2>
 
         {learned ? (
-          <p className="[font-family:var(--font-gaegu)] text-[20px] font-normal leading-[1.3] text-text-primary">
+          <p className="[font-family:var(--font-hyc-handwritten-regular)] text-[20px] font-normal leading-[1.3] text-text-primary">
             {learned}
           </p>
         ) : null}

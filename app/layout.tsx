@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Gaegu, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -34,10 +34,15 @@ const hkGrotesk = localFont({
   variable: "--font-hk-grotesk",
 });
 
-const gaegu = Gaegu({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-gaegu",
+const hycHandwrittenRegular = localFont({
+  src: [
+    {
+      path: "./fonts/hyc-handwritten-regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-hyc-handwritten-regular",
 });
 
 export const metadata: Metadata = {
@@ -83,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${hkGrotesk.variable} ${gaegu.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${hkGrotesk.variable} ${hycHandwrittenRegular.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

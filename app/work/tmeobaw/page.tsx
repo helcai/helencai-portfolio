@@ -86,7 +86,7 @@ export default function TmeobawPage() {
             </p>
           </div>
 
-          <p className="[font-family:var(--font-gaegu)] text-base font-normal leading-normal text-black">
+          <p className="[font-family:var(--font-hyc-handwritten-regular)] text-base font-normal leading-normal text-black">
             project in progress...
           </p>
 
