@@ -23,7 +23,6 @@
   --color-white: var(--color-white);
   --font-sans: var(--font-hk-grotesk);
   --font-mono: var(--font-geist-mono);
-  --font-cedarville: var(--font-cedarville-cursive);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,4 +41,9 @@ body {
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: fixed;
+}
+
+body:has(.case-study-page) {
+  background-color: #ffffff;
+  background-image: none;
 }

@@ -16,7 +16,7 @@ export function AboutSection() {
         About
       </h2>
 
-      <p className="w-full font-cedarville text-[20px] font-normal leading-[1.3] text-text-primary">
+      <p className="w-full [font-family:var(--font-gaegu)] text-[20px] font-normal leading-[1.3] text-text-primary">
         a shadow is evidence of the presence of something unseen. as a designer,
         I’m interested in that same tension by using design to reveal stories,
         perspectives, and ideas that exist just beyond what we immediately see.

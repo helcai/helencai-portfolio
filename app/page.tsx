@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import {
   useEffect,
   useMemo,
@@ -12,6 +10,7 @@ import {
 import { AboutSection } from "@/components/about-section";
 import { PageBackground } from "@/components/page-background";
 import { ProjectRow } from "@/components/project-row";
+import { SiteHeader } from "@/components/site-header";
 
 const SHADOW_BACKGROUND_VIDEOS = [
   "/images/background/fireescape-shadow-bkg.webm",
@@ -32,35 +31,6 @@ function useHasMounted() {
     () => () => {},
     () => true,
     () => false,
-  );
-}
-
-type NavItemProps = {
-  href: string;
-  label: string;
-  active?: boolean;
-  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
-};
-
-function NavItem({ href, label, active = false, onClick }: NavItemProps) {
-  const visibleWeight = active ? "font-semibold" : "font-medium";
-
-  return (
-    <a
-      href={href}
-      onClick={onClick}
-      aria-current={active ? "location" : undefined}
-      className="grid text-text-primary [&>*]:col-start-1 [&>*]:row-start-1"
-    >
-      <span aria-hidden className="invisible font-semibold uppercase">
-        {label}
-      </span>
-      <span
-        className={`uppercase transition-[font-weight] duration-200 ease-in-out hover:font-semibold ${visibleWeight}`}
-      >
-        {label}
-      </span>
-    </a>
   );
 }
 
@@ -136,39 +106,14 @@ export default function Home() {
       <PageBackground videoSrc={shadowVideoSrc} />
 
       <div className="relative flex min-h-full flex-col overflow-x-clip font-sans text-text-primary">
-        <header className="mx-auto flex w-[90%] max-w-[1512px] items-center justify-between px-0 pt-12 md:gap-6 md:pt-12 lg:px-0 lg:pt-[50px]">
-          <Link href="/" className="shrink-0" aria-label="Helen Cai — home">
-            <Image
-              src="/images/branding/ihearthyc.svg"
-              alt="i heart hyc"
-              width={129}
-              height={46}
-              priority
-              className="h-10 w-auto md:h-11 lg:h-[46px]"
-            />
-          </Link>
-
-          <nav aria-label="Primary">
-            <ul className="flex items-center gap-6 text-base uppercase tracking-normal md:gap-10 md:text-lg lg:gap-20">
-              <li>
-                <NavItem
-                  href="#work"
-                  label="work"
-                  active={activeSection === "work"}
-                  onClick={scrollToSection("work")}
-                />
-              </li>
-              <li>
-                <NavItem
-                  href="#about"
-                  label="about"
-                  active={activeSection === "about"}
-                  onClick={scrollToSection("about")}
-                />
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <SiteHeader
+          workHref="#work"
+          aboutHref="#about"
+          workActive={activeSection === "work"}
+          aboutActive={activeSection === "about"}
+          onWorkClick={scrollToSection("work")}
+          onAboutClick={scrollToSection("about")}
+        />
 
         <main className="flex flex-1 flex-col">
           <div className="flex w-full justify-center">
@@ -176,7 +121,7 @@ export default function Home() {
               aria-labelledby="hero-heading"
               className="mx-auto box-border flex w-[90%] max-w-[654px] flex-col items-center gap-4 px-2 pb-28 pt-16 text-center sm:px-4 md:gap-5 md:px-6 md:pt-24 lg:px-8 lg:pb-32 lg:pt-[158px]"
             >
-              <p className="font-cedarville text-[28px] leading-8 text-black sm:text-[30px] md:text-[32px] md:leading-9 lg:text-[36px] lg:leading-10">
+              <p className="[font-family:var(--font-gaegu)] text-[28px] leading-8 text-black sm:text-[30px] md:text-[32px] md:leading-9 lg:text-[36px] lg:leading-10">
                 hi! i’m helen
               </p>
 
@@ -209,6 +154,7 @@ export default function Home() {
                 imageSrc="/images/projects/social-templates/default.png"
                 hoverImageSrc="/images/projects/social-templates/hover.png"
                 reverse={false}
+                href="/work/social-templates"
               />
               <ProjectRow
                 title="the miserable experience of being a woman"
