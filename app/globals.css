@@ -40,27 +40,32 @@ body {
 
 /* Full-content-height gradient on the homepage wrapper. Body backgrounds
    paint on the canvas at viewport size, which cut the image off mid-page. */
+/* TEMP visual test: solid #FFF7EC homepage. Restore the background-image
+   rules below to revert. */
 .homepage-root {
-  background-color: var(--color-white);
-  background-image: url("/images/background/yellow-blue-gradient-bkg-mobile.jpg");
+  background-color: #fff7ec;
+  background-image: none;
+  /* background-image: url("/images/background/yellow-blue-gradient-bkg-mobile.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
-  background-attachment: scroll;
+  background-attachment: scroll; */
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
   body {
-    background-image: url("/images/background/yellow-blue-gradient-bkg.png");
+    background-color: #fff7ec;
+    background-image: none;
+    /* background-image: url("/images/background/yellow-blue-gradient-bkg.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
-    background-attachment: fixed;
+    background-attachment: fixed; */
   }
 
   .homepage-root {
     background-image: none;
-    background-color: transparent;
+    background-color: #fff7ec;
   }
 }
 
