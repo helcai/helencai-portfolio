@@ -174,6 +174,7 @@ export default function Home() {
                 imageSrc="/images/projects/milf/default.png"
                 hoverImageSrc="/images/projects/milf/hover.png"
                 reverse={false}
+                href="/work/milf"
               />
               <ProjectRow
                 title="Fusion Rebrand"
@@ -183,6 +184,7 @@ export default function Home() {
                 imageSrc="/images/projects/fusion/default.png"
                 hoverImageSrc="/images/projects/fusion/hover.png"
                 reverse={true}
+                href="/work/fusion"
               />
               <ProjectRow
                 title="Analytics on Demand for Optum"
@@ -192,6 +194,7 @@ export default function Home() {
                 imageSrc="/images/projects/aod/default.png"
                 hoverImageSrc="/images/projects/aod/hover.png"
                 reverse={false}
+                href="/work/aod"
               />
             </div>
           </section>
