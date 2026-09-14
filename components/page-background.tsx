@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type PageBackgroundProps = {
@@ -9,6 +10,10 @@ type PageBackgroundProps = {
 
 const DESKTOP_QUERY =
   "(min-width: 768px) and (hover: hover) and (pointer: fine)";
+
+function isVideoSrc(src: string) {
+  return src.endsWith(".webm");
+}
 
 export function PageBackground({ desktopSrc, mobileSrc }: PageBackgroundProps) {
   const [src, setSrc] = useState<string | null>(null);
@@ -47,17 +52,28 @@ export function PageBackground({ desktopSrc, mobileSrc }: PageBackgroundProps) {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <video
-        key={src}
-        className="absolute inset-0 h-full w-full object-cover object-top"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-      >
-        <source src={src} type="video/webm" />
-      </video>
+      {isVideoSrc(src) ? (
+        <video
+          key={src}
+          className="absolute inset-0 h-full w-full object-cover object-top"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        >
+          <source src={src} type="video/webm" />
+        </video>
+      ) : (
+        <Image
+          key={src}
+          src={src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-top"
+        />
+      )}
     </div>
   );
 }

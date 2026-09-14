@@ -15,15 +15,15 @@ import { SiteHeader } from "@/components/site-header";
 const SHADOW_BACKGROUNDS = [
   {
     desktop: "/images/background/fireescape-shadow-bkg.webm",
-    mobile: "/images/background/fireescape-shadow-mobile.webm",
+    mobile: "/images/background/fireescape-shadow.png",
   },
   {
     desktop: "/images/background/flower-shadow-bkg.webm",
-    mobile: "/images/background/flower-shadow-mobile.webm",
+    mobile: "/images/background/flower-shadow.png",
   },
   {
     desktop: "/images/background/leaf-shadow-bkg.webm",
-    mobile: "/images/background/leaf-shadow-mobile.webm",
+    mobile: "/images/background/leaf-shadow.png",
   },
 ] as const;
 
