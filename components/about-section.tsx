@@ -23,7 +23,7 @@ export function AboutSection() {
       </p>
 
       <div className="flex w-full flex-col items-stretch gap-6 md:flex-row md:items-stretch md:gap-[8%] lg:gap-10">
-      <div className="relative mx-auto aspect-square w-full max-w-[220px] shrink-0 overflow-hidden md:mx-0 md:max-w-none md:w-[26%]">
+      <div className="relative mx-auto aspect-square w-full max-w-full shrink-0 overflow-hidden md:mx-0 md:max-w-none md:w-[26%]">
           <Image
             src="/images/branding/helenphoto.png"
             alt="Helen Cai"

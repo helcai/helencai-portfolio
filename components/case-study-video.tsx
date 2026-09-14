@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type CaseStudyVideoProps = {
   src: string;
@@ -17,6 +17,7 @@ export function CaseStudyVideo({
   label,
   className = "",
 }: CaseStudyVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -29,12 +30,34 @@ export function CaseStudyVideo({
     return () => mediaQuery.removeEventListener("change", updatePreference);
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+
+        if (entry.isIntersecting) {
+          void video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [prefersReducedMotion, src]);
+
   return (
     <figure className={`relative w-full overflow-hidden ${className}`}>
       <video
+        ref={videoRef}
         width={width}
         height={height}
-        autoPlay={!prefersReducedMotion}
+        autoPlay={false}
         loop={!prefersReducedMotion}
         muted
         playsInline

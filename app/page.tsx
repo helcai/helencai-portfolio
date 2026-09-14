@@ -12,17 +12,26 @@ import { PageBackground } from "@/components/page-background";
 import { ProjectRow } from "@/components/project-row";
 import { SiteHeader } from "@/components/site-header";
 
-const SHADOW_BACKGROUND_VIDEOS = [
-  "/images/background/fireescape-shadow-bkg.webm",
-  "/images/background/flower-shadow-bkg.webm",
-  "/images/background/leaf-shadow-bkg.webm",
+const SHADOW_BACKGROUNDS = [
+  {
+    desktop: "/images/background/fireescape-shadow-bkg.webm",
+    mobile: "/images/background/fireescape-shadow-mobile.webm",
+  },
+  {
+    desktop: "/images/background/flower-shadow-bkg.webm",
+    mobile: "/images/background/flower-shadow-mobile.webm",
+  },
+  {
+    desktop: "/images/background/leaf-shadow-bkg.webm",
+    mobile: "/images/background/leaf-shadow-mobile.webm",
+  },
 ] as const;
 
-const DEFAULT_SHADOW_VIDEO = SHADOW_BACKGROUND_VIDEOS[2];
+const DEFAULT_SHADOW = SHADOW_BACKGROUNDS[2];
 
-function pickRandomShadowVideo() {
-  return SHADOW_BACKGROUND_VIDEOS[
-    Math.floor(Math.random() * SHADOW_BACKGROUND_VIDEOS.length)
+function pickRandomShadow() {
+  return SHADOW_BACKGROUNDS[
+    Math.floor(Math.random() * SHADOW_BACKGROUNDS.length)
   ]!;
 }
 
@@ -52,8 +61,8 @@ function scrollToSection(sectionId: string) {
 
 export default function Home() {
   const hasMounted = useHasMounted();
-  const shadowVideoSrc = useMemo(
-    () => (hasMounted ? pickRandomShadowVideo() : DEFAULT_SHADOW_VIDEO),
+  const shadowBackground = useMemo(
+    () => (hasMounted ? pickRandomShadow() : DEFAULT_SHADOW),
     [hasMounted],
   );
   const [activeSection, setActiveSection] = useState<"work" | "about" | null>(
@@ -102,10 +111,13 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <PageBackground videoSrc={shadowVideoSrc} />
+    <div className="homepage-root relative isolate min-h-full font-sans text-text-primary">
+      <PageBackground
+        desktopSrc={shadowBackground.desktop}
+        mobileSrc={shadowBackground.mobile}
+      />
 
-      <div className="relative flex min-h-full flex-col overflow-x-clip font-sans text-text-primary">
+      <div className="relative z-0 flex min-h-full flex-col">
         <SiteHeader
           workHref="#work"
           aboutHref="#about"
@@ -116,10 +128,10 @@ export default function Home() {
         />
 
         <main className="flex flex-1 flex-col">
-          <div className="flex w-full justify-center">
+          <div className="flex w-full justify-start md:justify-center">
             <section
               aria-labelledby="hero-heading"
-              className="mx-auto box-border flex w-[90%] max-w-[654px] flex-col items-center gap-4 px-2 pb-28 pt-16 text-center sm:px-4 md:gap-5 md:px-6 md:pt-24 lg:px-8 lg:pb-32 lg:pt-[158px]"
+              className="mx-auto box-border flex w-[90%] max-w-[654px] flex-col items-start gap-4 px-2 pb-28 pt-16 text-left sm:px-4 md:items-center md:gap-5 md:px-6 md:pt-24 md:text-center lg:px-8 lg:pb-32 lg:pt-[158px]"
             >
               <p className="[font-family:var(--font-gaegu)] text-[28px] leading-8 text-black sm:text-[30px] md:text-[32px] md:leading-9 lg:text-[36px] lg:leading-10">
                 hi! i’m helen
@@ -202,6 +214,6 @@ export default function Home() {
           <AboutSection />
         </main>
       </div>
-    </>
+    </div>
   );
 }

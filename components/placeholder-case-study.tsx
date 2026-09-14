@@ -12,7 +12,7 @@ export function PlaceholderCaseStudy() {
             width={250}
             height={89}
             priority
-            className="h-[89px] w-[250px]"
+            className="h-auto w-[250px] max-w-full"
           />
 
           <p className="w-full text-[24px] font-semibold leading-normal text-text-primary">
