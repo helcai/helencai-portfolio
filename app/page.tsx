@@ -164,6 +164,7 @@ export default function Home() {
                 imageSrc="/images/projects/tmeobaw/tmeobaw-default.png"
                 hoverImageSrc="/images/projects/tmeobaw/tmeobaw-hover.png"
                 reverse={true}
+                href="/work/tmeobaw"
               />
               <ProjectRow
                 title="man i love finance (milf)"
