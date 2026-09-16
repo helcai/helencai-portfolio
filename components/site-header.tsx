@@ -62,7 +62,7 @@ export function SiteHeader({
       </Link>
 
       <nav aria-label="Primary">
-        <ul className="flex items-center gap-6 text-base uppercase tracking-normal md:gap-10 md:text-lg lg:gap-20">
+        <ul className="flex items-center gap-6 [font-family:var(--font-hyc-handwritten-regular)] text-base uppercase tracking-normal md:gap-10 md:text-lg lg:gap-20">
           <li>
             <NavItem
               href={workHref}
