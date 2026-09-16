@@ -1,17 +1,45 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 
-const TAXI_SRC = "/images/branding/hyc-taxi.webm";
+const TAXI_DESKTOP_SRC = "/images/branding/hyc-taxi.webm";
+const TAXI_MOBILE_SRC = "/images/branding/hyc-taxi-mobile.webm";
+const TABLET_UP_QUERY = "(min-width: 768px)";
 const TARGET_PLAYS = 2;
 const FALLBACK_TIMEOUT_MS = 8000;
 const FADE_MS = 400;
+
+function subscribeTabletUp(onStoreChange: () => void) {
+  const mediaQuery = window.matchMedia(TABLET_UP_QUERY);
+  mediaQuery.addEventListener("change", onStoreChange);
+  return () => mediaQuery.removeEventListener("change", onStoreChange);
+}
+
+function getTabletUpSnapshot() {
+  return window.matchMedia(TABLET_UP_QUERY).matches;
+}
+
+function getTabletUpServerSnapshot() {
+  return true;
+}
 
 export function IntroScreen() {
   const pathname = usePathname();
   const [active, setActive] = useState(() => pathname === "/");
   const [fading, setFading] = useState(false);
+  const isTabletUp = useSyncExternalStore(
+    subscribeTabletUp,
+    getTabletUpSnapshot,
+    getTabletUpServerSnapshot,
+  );
+  const taxiSrc = isTabletUp ? TAXI_DESKTOP_SRC : TAXI_MOBILE_SRC;
   const videoRef = useRef<HTMLVideoElement>(null);
   const playCountRef = useRef(0);
   const finishedRef = useRef(false);
@@ -58,6 +86,8 @@ export function IntroScreen() {
       finish();
       return;
     }
+
+    playCountRef.current = 0;
 
     const video = videoRef.current;
     const startFallback = (ms: number) => {
@@ -117,11 +147,13 @@ export function IntroScreen() {
       video.removeEventListener("error", finish);
       video.removeEventListener("loadedmetadata", armDurationFallback);
     };
-  }, [active, clearFallback, finish]);
+  }, [active, clearFallback, finish, taxiSrc]);
 
   if (!active) {
     return null;
   }
+
+  const isMobileSrc = taxiSrc === TAXI_MOBILE_SRC;
 
   return (
     <div
@@ -134,9 +166,10 @@ export function IntroScreen() {
       style={{ transitionDuration: `${FADE_MS}ms` }}
     >
       <video
+        key={taxiSrc}
         ref={videoRef}
-        width={800}
-        height={500}
+        width={isMobileSrc ? 394 : 800}
+        height={isMobileSrc ? 852 : 500}
         className="h-auto max-h-[70vh] w-auto max-w-[min(86vw,800px)] bg-[#FFF7EC] object-contain"
         autoPlay
         muted
@@ -147,7 +180,7 @@ export function IntroScreen() {
         disableRemotePlayback
         aria-hidden="true"
       >
-        <source src={TAXI_SRC} type="video/webm" />
+        <source src={taxiSrc} type="video/webm" />
       </video>
     </div>
   );
