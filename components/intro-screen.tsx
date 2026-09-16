@@ -10,7 +10,7 @@ import {
 } from "react";
 
 const TAXI_DESKTOP_SRC = "/images/branding/hyc-taxi.webm";
-const TAXI_MOBILE_SRC = "/images/branding/hyc-taxi-mobile.webm";
+const TAXI_MOBILE_SRC = "/images/branding/hyc-taxi-mobile.mp4";
 const TABLET_UP_QUERY = "(min-width: 768px)";
 const TARGET_PLAYS = 2;
 const FALLBACK_TIMEOUT_MS = 8000;
@@ -180,7 +180,10 @@ export function IntroScreen() {
         disableRemotePlayback
         aria-hidden="true"
       >
-        <source src={taxiSrc} type="video/webm" />
+        <source
+          src={taxiSrc}
+          type={isMobileSrc ? "video/mp4" : "video/webm"}
+        />
       </video>
     </div>
   );
