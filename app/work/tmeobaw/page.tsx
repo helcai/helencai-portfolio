@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { CaseStudyVideo } from "@/components/case-study-video";
+import { LightboxImage } from "@/components/lightbox-image";
 import { SiteHeader } from "@/components/site-header";
 
 export default function TmeobawPage() {
@@ -95,30 +95,27 @@ export default function TmeobawPage() {
             className="grid w-full grid-cols-1 gap-[7px] md:grid-cols-[427fr_461fr] md:gap-x-3"
           >
             <div className="flex flex-col gap-[7px]">
-              <Image
+              <LightboxImage
                 src="/images/projects/tmeobaw/computer.png"
                 alt="Laptop installation of the interactive website beside cyanotype prints and a lamp"
                 width={854}
                 height={570}
                 sizes="(max-width: 767px) 90vw, 427px"
-                className="h-auto w-full"
               />
-              <Image
+              <LightboxImage
                 src="/images/projects/tmeobaw/file.png"
                 alt="Printed project booklet titled the miserable experience of being a woman"
                 width={854}
                 height={568}
                 sizes="(max-width: 767px) 90vw, 427px"
-                className="h-auto w-full"
               />
             </div>
-            <Image
+            <LightboxImage
               src="/images/projects/tmeobaw/wall.png"
               alt="Gallery installation of cyanotype prints viewed through a glass wall"
               width={922}
               height={1152}
               sizes="(max-width: 767px) 90vw, 461px"
-              className="h-auto w-full"
             />
           </section>
         </article>

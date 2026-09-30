@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { CaseStudyVideo } from "@/components/case-study-video";
+import { LightboxImage } from "@/components/lightbox-image";
 import { SiteHeader } from "@/components/site-header";
 
 const BENEFITS = [
@@ -184,30 +184,22 @@ export default function SocialTemplatesPage() {
             <div className="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
               <div className="flex w-full flex-col gap-[45px] lg:w-[360px] lg:shrink-0">
                 {GUIDELINE_IMAGES.map((image) => (
-                  <div
+                  <LightboxImage
                     key={image.src}
-                    className="relative aspect-[720/405] w-full overflow-hidden bg-white"
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="(max-width: 1023px) 90vw, 360px"
-                      className="object-cover"
-                    />
-                  </div>
+                    src={image.src}
+                    alt={image.alt}
+                    sizes="(max-width: 1023px) 90vw, 360px"
+                    className="aspect-[720/405] bg-white"
+                  />
                 ))}
               </div>
 
-              <div className="relative aspect-[444/698] w-full overflow-hidden lg:w-[444px] lg:shrink-0">
-                <Image
-                  src="/images/projects/social-templates/overview-image.png"
-                  alt="Figma overview of more than 100 Forbes social card templates organized by type"
-                  fill
-                  sizes="(max-width: 1023px) 90vw, 444px"
-                  className="object-cover"
-                />
-              </div>
+              <LightboxImage
+                src="/images/projects/social-templates/overview-image.png"
+                alt="Figma overview of more than 100 Forbes social card templates organized by type"
+                sizes="(max-width: 1023px) 90vw, 444px"
+                className="aspect-[444/698] lg:w-[444px] lg:shrink-0"
+              />
             </div>
 
             <section
@@ -220,15 +212,13 @@ export default function SocialTemplatesPage() {
               >
                 card types
               </h2>
-              <div className="relative aspect-[1800/794] w-full">
-                <Image
-                  src="/images/projects/social-templates/card-types.png"
-                  alt="Ten Forbes social card types: image cover, pull quote, listicle, icon list, card, data, Q and A, timeline, quiz, and text focus"
-                  fill
-                  sizes="(max-width: 900px) 90vw, 900px"
-                  className="object-contain"
-                />
-              </div>
+              <LightboxImage
+                src="/images/projects/social-templates/card-types.png"
+                alt="Ten Forbes social card types: image cover, pull quote, listicle, icon list, card, data, Q and A, timeline, quiz, and text focus"
+                sizes="(max-width: 900px) 90vw, 900px"
+                className="aspect-[1800/794]"
+                imageClassName="object-contain"
+              />
             </section>
 
             <section
