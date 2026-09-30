@@ -179,14 +179,14 @@ export default function Home() {
                 href="/work/tmeobaw"
               />
               <ProjectRow
-                title="man i love finance (milf)"
-                learned="learned the importance of really listening to users"
-                description="a learning platform that helps explain financial terms in a way that helps young girls understand."
+                title="MyAtlas"
+                learned="Learned how thoughtful visual systems can make complex information feel clear, approachable, and engaging."
+                description="a digital wellness platform that helps college students better understand and manage their mental health through personalized insights and passive health data."
                 tags="UI/UX | BRANDING"
-                imageSrc="/images/projects/milf/default.png"
-                hoverImageSrc="/images/projects/milf/hover.png"
+                imageSrc="/images/projects/myatlas/myatlas-default.png"
+                hoverImageSrc="/images/projects/myatlas/myatlas-hover.png"
                 reverse={false}
-                href="/work/milf"
+                href="/work/myatlas"
               />
               <ProjectRow
                 title="Fusion Rebrand"
