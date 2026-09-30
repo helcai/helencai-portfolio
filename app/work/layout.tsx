@@ -1,3 +1,5 @@
+import { LightboxGallery } from "@/components/lightbox-image";
+
 export default function WorkLayout({
   children,
 }: {
@@ -9,7 +11,7 @@ export default function WorkLayout({
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 -z-10 bg-[#FFFFFF]"
       />
-      {children}
+      <LightboxGallery>{children}</LightboxGallery>
     </div>
   );
 }
