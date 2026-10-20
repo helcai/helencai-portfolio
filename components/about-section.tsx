@@ -10,17 +10,11 @@ export function AboutSection() {
     <section
   id="about"
   aria-labelledby="about-heading"
-  className="mx-auto flex w-[90%] max-w-[900px] flex-col scroll-mt-24 gap-6 px-0 pb-16 pt-8 md:scroll-mt-28 md:gap-8 md:pt-10 lg:pb-[100px] lg:pt-12"
+  className="mx-auto flex w-[90%] max-w-[1000px] flex-col scroll-mt-24 gap-6 px-0 pb-16 pt-8 md:scroll-mt-28 md:gap-8 md:pt-10 lg:pb-[100px] lg:pt-12"
 >
       <h2 id="about-heading" className="sr-only">
         About
       </h2>
-
-      <p className="w-full [font-family:var(--font-hyc-handwritten-regular)] text-[20px] font-normal leading-[1.3] text-text-primary">
-        a shadow is evidence of the presence of something unseen. as a designer,
-        I’m interested in that same tension by using design to reveal stories,
-        perspectives, and ideas that exist just beyond what we immediately see.
-      </p>
 
       <div className="flex w-full flex-col items-stretch gap-6 md:flex-row md:items-stretch md:gap-[8%] lg:gap-10">
       <div className="relative mx-auto aspect-square w-full max-w-full shrink-0 overflow-hidden md:mx-0 md:max-w-none md:w-[26%]">

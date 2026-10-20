@@ -50,12 +50,12 @@ export default function MyAtlasPage() {
       <SiteHeader workHref="/#work" aboutHref="/#about" workActive />
 
       <main className="flex flex-1 justify-center pb-16 pt-10 md:pb-20 md:pt-12 lg:pb-[100px] lg:pt-16">
-        <article className="flex w-[90%] max-w-[900px] flex-col gap-8 md:gap-10">
+        <article className="flex w-[90%] max-w-[1000px] flex-col gap-8 md:gap-10">
           <LightboxImage
             src="/images/projects/myatlas/myatlas-cover.png"
             alt="MyAtlas app screens showing profile, dashboard, and wellness check interfaces"
             priority
-            sizes="(max-width: 900px) 90vw, 900px"
+            sizes="(max-width: 1000px) 90vw, 1000px"
             className="aspect-[1200/858]"
           />
 
@@ -172,7 +172,7 @@ export default function MyAtlasPage() {
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
-                sizes="(max-width: 639px) 90vw, (max-width: 900px) 45vw, 440px"
+                sizes="(max-width: 639px) 90vw, (max-width: 1000px) 45vw, 490px"
                 className="aspect-[842/595]"
               />
             ))}

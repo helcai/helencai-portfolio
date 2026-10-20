@@ -45,6 +45,7 @@ body {
 .homepage-root {
   background-color: #fff7ec;
   background-image: none;
+  overflow-x: clip;
   /* background-image: url("/images/background/yellow-blue-gradient-bkg-mobile.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -72,4 +73,58 @@ body {
 body:has(.case-study-page) {
   background-color: #ffffff;
   background-image: none;
+}
+
+/* Phone, tablet, and desktop share the light page background.
+   Fan size still changes so a blade can cover the script line.
+   Variables live on the hero so the chain layer can use the same anchor. */
+.hero-stage {
+  --fan-canvas: 112svh;
+  --fan-anchor-x: 84%;
+  --fan-anchor-y: 50%;
+}
+
+.fan-scene {
+  --fan-scene-bg: #fff7ec;
+  background-color: var(--fan-scene-bg);
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .hero-stage {
+    --fan-canvas: max(136svh, 200%);
+    --fan-anchor-x: 74%;
+    --fan-anchor-y: 50%;
+  }
+}
+
+/* Once the column hits 1000px it stops growing, so the hub tracks that inset
+   and a blade still covers the whole phrase. */
+@media (min-width: 1111px) and (max-width: 1279px) {
+  .hero-stage {
+    --fan-anchor-x: calc(119% - 500px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-stage {
+    --fan-canvas: 182%;
+    --fan-anchor-x: calc(117% - 500px);
+    --fan-anchor-y: calc(100% - 300px);
+  }
+}
+
+@media (min-width: 1680px) {
+  .hero-stage {
+    --fan-anchor-x: calc(72% + 256px);
+  }
+}
+
+/* Lightens the blurred fan behind the cards without a hard edge. */
+.work-fan-wash {
+  background: linear-gradient(
+    to bottom,
+    rgb(255 247 236 / 0%) 0,
+    rgb(255 247 236 / 42%) 160px,
+    rgb(255 247 236 / 52%) 100%
+  );
 }

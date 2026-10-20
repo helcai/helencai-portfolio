@@ -38,7 +38,7 @@ export default function SocialTemplatesPage() {
         <SiteHeader workHref="/#work" aboutHref="/#about" workActive />
 
         <main className="flex flex-1 justify-center pb-16 pt-10 md:pb-20 md:pt-12 lg:pb-[100px] lg:pt-16">
-          <article className="flex w-[90%] max-w-[900px] flex-col gap-8 md:gap-10">
+          <article className="flex w-[90%] max-w-[1000px] flex-col gap-8 md:gap-10">
             <CaseStudyVideo
               src="/images/projects/social-templates/social-template-header-video.mp4"
               width={900}
@@ -215,7 +215,7 @@ export default function SocialTemplatesPage() {
               <LightboxImage
                 src="/images/projects/social-templates/card-types.png"
                 alt="Ten Forbes social card types: image cover, pull quote, listicle, icon list, card, data, Q and A, timeline, quiz, and text focus"
-                sizes="(max-width: 900px) 90vw, 900px"
+                sizes="(max-width: 1000px) 90vw, 1000px"
                 className="aspect-[1800/794]"
                 imageClassName="object-contain"
               />

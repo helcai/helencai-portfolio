@@ -1,47 +1,18 @@
 "use client";
 
-import {
-  useEffect,
-  useMemo,
-  useState,
-  useSyncExternalStore,
-  type MouseEvent,
-} from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { AboutSection } from "@/components/about-section";
-import { PageBackground } from "@/components/page-background";
+import { FanScene } from "@/components/fan-scene";
 import { ProjectRow } from "@/components/project-row";
 import { SiteHeader } from "@/components/site-header";
 
-const SHADOW_BACKGROUNDS = [
-  {
-    desktop: "/images/background/fireescape-shadow-bkg.webm",
-    mobile: "/images/background/fireescape-shadow.png",
-  },
-  {
-    desktop: "/images/background/flower-shadow-bkg.webm",
-    mobile: "/images/background/flower-shadow.png",
-  },
-  {
-    desktop: "/images/background/leaf-shadow-bkg.webm",
-    mobile: "/images/background/leaf-shadow.png",
-  },
+const FAN_PHRASES = [
+  "a visual storyteller",
+  "a brand designer",
+  "an interaction designer",
+  "an UI/UX designer",
+  "a palindrome enthusiast",
 ] as const;
-
-const DEFAULT_SHADOW = SHADOW_BACKGROUNDS[2];
-
-function pickRandomShadow() {
-  return SHADOW_BACKGROUNDS[
-    Math.floor(Math.random() * SHADOW_BACKGROUNDS.length)
-  ]!;
-}
-
-function useHasMounted() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
 
 function scrollToSection(sectionId: string) {
   return (event: MouseEvent<HTMLAnchorElement>) => {
@@ -60,14 +31,11 @@ function scrollToSection(sectionId: string) {
 }
 
 export default function Home() {
-  const hasMounted = useHasMounted();
-  const shadowBackground = useMemo(
-    () => (hasMounted ? pickRandomShadow() : DEFAULT_SHADOW),
-    [hasMounted],
-  );
   const [activeSection, setActiveSection] = useState<"work" | "about" | null>(
     null,
   );
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const phraseRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const sectionIds = ["work", "about"] as const;
@@ -112,52 +80,78 @@ export default function Home() {
 
   return (
     <div className="homepage-root relative isolate min-h-full font-sans text-text-primary">
-      <PageBackground
-        desktopSrc={shadowBackground.desktop}
-        mobileSrc={shadowBackground.mobile}
-      />
-
       <div className="relative z-0 flex min-h-full flex-col">
-        <SiteHeader
-          workHref="#work"
-          aboutHref="#about"
-          workActive={activeSection === "work"}
-          aboutActive={activeSection === "about"}
-          onWorkClick={scrollToSection("work")}
-          onAboutClick={scrollToSection("about")}
-        />
+        <section className="hero-stage relative min-h-svh">
+          <FanScene
+            phraseRef={phraseRef}
+            onBladePass={() =>
+              setPhraseIndex((index) => (index + 1) % FAN_PHRASES.length)
+            }
+          />
 
-        <main className="flex flex-1 flex-col">
-          <div className="flex w-full justify-start md:justify-center">
-            <section
-              aria-labelledby="hero-heading"
-              className="mx-auto box-border flex w-[90%] max-w-[654px] flex-col items-start gap-4 px-2 pb-28 pt-16 text-left sm:px-4 md:items-center md:gap-5 md:px-6 md:pt-24 md:text-center lg:px-8 lg:pb-32 lg:pt-[158px]"
-            >
-              <p className="[font-family:var(--font-hyc-handwritten-regular)] text-[28px] leading-8 text-black sm:text-[30px] md:text-[32px] md:leading-9 lg:text-[36px] lg:leading-10">
-                hi! i’m helen
-              </p>
-
-              <h1
-                id="hero-heading"
-                className="text-[28px] font-semibold leading-[1.1] text-text-primary sm:text-[30px] md:text-[32px] lg:text-[36px] lg:leading-[1.15]"
-              >
-                a visual storyteller specializing in engaging user experiences &
-                enhancing brand voices
-              </h1>
-
-              <div className="flex w-full flex-col text-base leading-normal text-text-primary lg:text-lg">
-                <p>currently @ Parsons, Figma, & goodr</p>
-                <p>prev @ Forbes & Optum</p>
-              </div>
-            </section>
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-30">
+            <div className="pointer-events-auto">
+              <SiteHeader
+                workHref="#work"
+                aboutHref="#about"
+                workActive={activeSection === "work"}
+                aboutActive={activeSection === "about"}
+                onWorkClick={scrollToSection("work")}
+                onAboutClick={scrollToSection("about")}
+              />
+            </div>
           </div>
 
+          <div className="relative z-10 flex min-h-svh flex-col">
+            <div className="mx-auto flex w-[90%] max-w-[1000px] flex-1 flex-col items-start pb-12 pt-[46svh] [@media(max-height:520px)]:pb-8 [@media(max-height:520px)]:pt-24 [@media(min-width:768px)_and_(min-height:700px)]:pt-[44svh] [@media(min-width:768px)_and_(min-height:700px)]:pb-16 xl:justify-end xl:pb-[130px] xl:pt-0">
+              <section
+                aria-labelledby="hero-heading"
+                className="@container relative box-border flex w-full max-w-[743px] flex-col items-start text-left [@media(max-height:520px)]:max-w-[62%]"
+              >
+                <p className="text-[20px] font-medium leading-none text-black md:text-[24px] xl:absolute xl:top-[-28px] xl:left-0 xl:text-[28px]">
+                  hi! i’m helen
+                </p>
+                <p
+                  ref={phraseRef}
+                  aria-live="polite"
+                  className="mt-0 max-w-full whitespace-nowrap [font-family:var(--font-allison)] text-[clamp(2.5rem,11.2vw,2.85rem)] leading-[0.85] text-black md:mt-0 md:text-[clamp(3.75rem,7.2vw,4.75rem)] xl:mt-0 xl:text-[clamp(2.75rem,17cqi,131px)] xl:leading-[0.85]"
+                >
+                  {FAN_PHRASES[phraseIndex]}
+                </p>
+                <h1
+                  id="hero-heading"
+                  className="mt-1 max-w-[16.5rem] text-[20px] font-semibold leading-[1.3] text-text-primary sm:text-[22px] md:mt-1 md:max-w-[22rem] md:text-[26px] md:leading-[1.25] xl:mt-0 xl:max-w-[743px] xl:text-[40px] xl:leading-[normal]"
+                >
+                  specializing in engaging user experiences & enhancing brand
+                  voices
+                </h1>
+                <div className="mt-4 flex w-full max-w-[654px] flex-col text-base leading-normal text-text-primary md:mt-5 md:text-[18px] xl:mt-[17px]">
+                  <p>currently @ Parsons, Figma, & goodr</p>
+                  <p>prev @ Forbes & Optum</p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <main className="flex flex-1 flex-col">
           <section
             id="work"
-            aria-label="Work"
-            className="mx-auto w-[90%] max-w-none scroll-mt-24 px-0 pb-12 md:scroll-mt-28 md:pb-16"
+            aria-labelledby="work-heading"
+            className="mx-auto w-[90%] max-w-[1000px] scroll-mt-24 px-0 pb-12 pt-24 md:scroll-mt-28 md:pb-16 md:pt-32 xl:pt-40"
           >
-            <div className="flex flex-col gap-10 md:gap-[60px]">
+            <h2
+              id="work-heading"
+              className="relative z-20 text-center [font-family:var(--font-allison)] text-[56px] leading-[0.85] text-black md:text-[76px] xl:text-[96px]"
+            >
+              my work
+            </h2>
+            <div id="work-cards" className="relative z-20 mt-10 md:mt-14">
+              <div
+                aria-hidden="true"
+                className="work-fan-wash pointer-events-none absolute -top-16 bottom-0 left-1/2 w-screen -translate-x-1/2"
+              />
+              <div className="relative flex flex-col gap-10 md:gap-[60px]">
               <ProjectRow
                 title="Social Templates for Forbes Media"
                 learned="learned how design systems improve efficiency"
@@ -208,6 +202,7 @@ export default function Home() {
                 reverse={false}
                 href="/work/aod"
               />
+              </div>
             </div>
           </section>
 

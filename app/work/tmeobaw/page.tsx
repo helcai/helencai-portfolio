@@ -8,7 +8,7 @@ export default function TmeobawPage() {
       <SiteHeader workHref="/#work" aboutHref="/#about" workActive />
 
       <main className="flex flex-1 justify-center pb-16 pt-10 md:pb-20 md:pt-12 lg:pb-[100px] lg:pt-16">
-        <article className="flex w-[90%] max-w-[900px] flex-col gap-8 md:gap-10">
+        <article className="flex w-[90%] max-w-[1000px] flex-col gap-8 md:gap-10">
           <CaseStudyVideo
             src="/images/projects/tmeobaw/meobaw-item%20search.mp4"
             width={1060}

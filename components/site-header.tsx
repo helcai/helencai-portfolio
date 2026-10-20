@@ -49,7 +49,7 @@ export function SiteHeader({
   onAboutClick,
 }: SiteHeaderProps) {
   return (
-    <header className="mx-auto flex w-[90%] max-w-[1512px] items-center justify-between px-0 pt-12 md:gap-6 md:pt-12 lg:px-0 lg:pt-[50px]">
+    <header className="mx-auto flex w-[90%] max-w-[1000px] items-center justify-between px-0 pt-12 md:gap-6 md:pt-12 lg:px-0 lg:pt-[50px]">
       <Link href="/" className="shrink-0" aria-label="Helen Cai — home">
         <Image
           src="/images/branding/ihearthyc.svg"

@@ -80,7 +80,7 @@ export function ProjectRow({
   );
 
   return (
-    <article aria-labelledby={headingId} className="mx-auto w-full max-w-[900px]">
+    <article aria-labelledby={headingId} className="w-full">
       {href ? (
         <Link
           href={href}

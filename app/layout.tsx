@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Allison, Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { IntroScreen } from "@/components/intro-screen";
 import "./globals.css";
@@ -33,6 +33,12 @@ const hkGrotesk = localFont({
     },
   ],
   variable: "--font-hk-grotesk",
+});
+
+const allison = Allison({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-allison",
 });
 
 const hycHandwrittenRegular = localFont({
@@ -89,7 +95,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${hkGrotesk.variable} ${hycHandwrittenRegular.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${hkGrotesk.variable} ${hycHandwrittenRegular.variable} ${allison.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <IntroScreen />
