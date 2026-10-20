@@ -41,17 +41,6 @@ const allison = Allison({
   variable: "--font-allison",
 });
 
-const hycHandwrittenRegular = localFont({
-  src: [
-    {
-      path: "./fonts/hyc-handwritten-regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-hyc-handwritten-regular",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://helencai.com"),
   title: "Helen Cai — Designer",
@@ -95,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${hkGrotesk.variable} ${hycHandwrittenRegular.variable} ${allison.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${hkGrotesk.variable} ${allison.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <IntroScreen />

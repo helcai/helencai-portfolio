@@ -10,7 +10,7 @@ const FAN_PHRASES = [
   "a visual storyteller",
   "a brand designer",
   "an interaction designer",
-  "an UI/UX designer",
+  "a UI/UX designer",
   "a palindrome enthusiast",
 ] as const;
 
@@ -174,7 +174,7 @@ export default function Home() {
               />
               <ProjectRow
                 title="MyAtlas"
-                learned="Learned how thoughtful visual systems can make complex information feel clear, approachable, and engaging."
+                learned="learned how thoughtful visual systems can make complex information feel clear, approachable, and engaging."
                 description="a digital wellness platform that helps college students better understand and manage their mental health through personalized insights and passive health data."
                 tags="UI/UX | BRANDING"
                 imageSrc="/images/projects/myatlas/myatlas-default.png"
