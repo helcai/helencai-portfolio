@@ -104,11 +104,11 @@ export default function MyAtlasPage() {
           <p className="text-base font-medium leading-normal text-black">
             MyAtlas is an innovative digital health application that provides
             evidence-based personalized mental wellness support to college
-            students and their wellness care team. My Atlas has developed a
+            students and their wellness care team. MyAtlas has developed a
             novel 3P (PPP) model to inform their application, with the 3 Ps
             standing for personalized, passive, and proactive. By passively
             monitoring mental health digital biomarkers collected from wearable
-            health devices, My Atlas will proactively provide personalized
+            health devices, MyAtlas will proactively provide personalized
             mental health tips and treatment options to users.
           </p>
 
