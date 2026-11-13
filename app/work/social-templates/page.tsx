@@ -41,6 +41,9 @@ export default function SocialTemplatesPage() {
           <article className="flex w-[90%] max-w-[1000px] flex-col gap-8 md:gap-10">
             <CaseStudyVideo
               src="/images/projects/social-templates/social-template-header-video.mp4"
+              webmSrc="/images/projects/social-templates/social-template-header-video.webm"
+              poster="/images/projects/social-templates/social-template-header-video-poster.webp"
+              priority
               width={900}
               height={432}
               label="Animated showcase of overlapping Forbes social template cards"
@@ -97,6 +100,8 @@ export default function SocialTemplatesPage() {
 
             <CaseStudyVideo
               src="/images/projects/social-templates/live-example.mp4"
+              webmSrc="/images/projects/social-templates/live-example.webm"
+              poster="/images/projects/social-templates/live-example-poster.webp"
               width={900}
               height={250}
               label="Live examples of Forbes social cards flipping into finished branded layouts"

@@ -11,6 +11,8 @@ export default function TmeobawPage() {
         <article className="flex w-[90%] max-w-[1000px] flex-col gap-8 md:gap-10">
           <CaseStudyVideo
             src="/images/projects/tmeobaw/meobaw-item%20search.mp4"
+            poster="/images/projects/tmeobaw/meobaw-item-search-poster.webp"
+            priority
             width={1060}
             height={720}
             label="Interactive TMEOBaW website: a cursor flashlight revealing objects on a blue field"
